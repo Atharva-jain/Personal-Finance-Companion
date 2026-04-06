@@ -55,7 +55,8 @@ com.yourname.financecompanion
 ├── data/               # The Data Layer
 │   ├── database/       # Room Database configuration & migrations
 │   ├── dao/            # Data Access Objects (Transaction, Goal, Challenge, Notification)
-│   └── model/          # Room Entities
+│   ├── model/          # Room Entities
+│   └── repositories/   # Repository pattern implementation (Data fetching & bridging logic)
 ├── di/                 # Koin Modules (AppModule for ViewModels, Repositories, Prefs)
 ├── ui/                 # The UI Layer (Jetpack Compose)
 │   ├── features/       # Screen-level composables (Home, Settings, Insights, Notifications)
