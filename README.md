@@ -1,62 +1,79 @@
 # 💸 Personal Finance Companion
 
-<p align="center">
+<p align="left">
   <img src="https://img.shields.io/badge/Kotlin-100%25-B125EA?style=for-the-badge&logo=kotlin" alt="Kotlin">
   <img src="https://img.shields.io/badge/Jetpack%20Compose-Modern_UI-4285F4?style=for-the-badge&logo=android" alt="Jetpack Compose">
   <img src="https://img.shields.io/badge/Architecture-MVVM-00C853?style=for-the-badge" alt="MVVM">
-  <img src="https://img.shields.io/badge/Concurrency-Coroutines_%26_Flow-blue?style=for-the-badge" alt="Coroutines">
-  <img src="https://img.shields.io/badge/DI-Koin-FF9800?style=for-the-badge" alt="Koin">
+  <img src="https://img.shields.io/badge/Offline-First-FF9800?style=for-the-badge" alt="Offline First">
 </p>
 
-## 📱 About The Project
+## 📖 Project Overview
 
-**Personal Finance Companion** is a robust, privacy-first Android application designed to help users take absolute control of their financial habits. Moving beyond traditional, static expense trackers, this application introduces **gamified financial challenges**, visual **savings goals**, and **intelligent background processing** to actively encourage better financial decisions.
+**Personal Finance Companion** is a modern, privacy-first Android application designed to help users take absolute control of their financial habits. Moving beyond traditional, static expense trackers, this application introduces **gamified financial challenges**, visual **savings goals**, and an **intelligent notification engine** that actively encourages better financial decisions.
 
-Developed entirely in **Kotlin** using **Jetpack Compose**, this project serves as a comprehensive showcase of modern Android development standards. It prioritizes a buttery-smooth user experience (UX) with reactive, offline-first architecture, ensuring user data is secure, persistent, and instantly available.
-
----
-
-## ✨ Core Features & Functionality
-
-### 🔐 Enterprise-Grade Security
-* **Biometric Authentication:** Integrates `androidx.biometric` to intercept the app launch state. Financial data is locked behind device-native fingerprint or facial recognition, governed by securely encrypted `SharedPreferences`.
-* **State Preservation:** Biometric state is hoisted and preserved across configuration changes (screen rotations) using `rememberSaveable` to prevent frustrating re-authentication loops.
-
-### 🧠 Intelligent Background Engine (`WorkManager`)
-* **Context-Aware Notifications:** Unlike standard alarms, the background workers query the Room Database *before* firing notifications. If a user has already logged an expense for the day, the Daily Reminder is silently canceled to prevent spam.
-* **Dynamic Summaries:** Calculates real 7-day trailing expense totals in the background and delivers exact financial figures directly to the Android System Notification Bar.
-* **In-App Notification Inbox:** An animated, persistent Inbox screen backed by Room, featuring swipe-to-delete gestures, unread state indicators, and seamless transition animations. Action buttons on system notifications allow users to bypass the home screen and navigate directly to the Inbox or Add Expense screens.
-
-### 🎯 Gamification & Goal Tracking
-* **Savings Targets:** Users can set complex financial goals (e.g., "Emergency Fund", "New Laptop"). Progress is calculated dynamically and visually represented via custom UI components.
-* **Financial Challenges:** Users opt into active challenges (e.g., "No Spend Weekend"). The app tracks consecutive successful days and alerts the user upon milestone completions.
-
-### 🎨 Fluid User Interface (Jetpack Compose)
-* **Single Activity Architecture:** Utilizes `NavHost` and Compose Navigation for instant, fragment-less screen transitions.
-* **Premium Micro-interactions:** Features custom `AnimatedVisibility` transitions, `animateColorAsState` for read/unread toggles, and infinite breathing animations for empty states.
-* **Dynamic Theming:** Deeply integrated Material Design 3, seamlessly adapting to the device's System Dark/Light modes.
+Developed as a showcase of modern Android engineering standards, it utilizes a 100% Kotlin, single-activity architecture. It prioritizes a buttery-smooth user experience with a declarative UI built with Jetpack Compose, asynchronous data streams via Coroutines/Flow, and a robust offline-first SQLite database using Room.
 
 ---
 
-## 🛠️ Technical Architecture & Stack
+## 📸 App Gallery
 
-This application strictly adheres to **Clean Architecture** principles and the **MVVM (Model-View-ViewModel)** design pattern to ensure scalability, testability, and separation of concerns.
+*(App screenshots demonstrating core user flows and UI design)*
 
-### Tech Stack Details:
-* **UI Toolkit:** Jetpack Compose (Declarative UI)
-* **Architecture:** MVVM + Clean Architecture
-* **Dependency Injection:** Koin (Chosen for its lightweight footprint and Kotlin-native DSL, injecting Repositories, ViewModels, and Preference Managers).
-* **Asynchronous Data Streams:** Kotlin Coroutines & `StateFlow` / `SharedFlow` (Ensuring the UI layer reacts instantly to database mutations without blocking the main thread).
-* **Local Persistence:** Room Database (SQLite wrapper). Utilizes one-shot `suspend` queries for background workers and continuous `Flow` emissions for active UI observation.
+| Dashboard Overview | Smart Inbox | Biometric Lock | Custom Settings |
+| :---: | :---: | :---: | :---: |
+| <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> |
 
-### 📂 Package Structure Preview
+---
+
+## ✨ Explanation of Features
+
+The application is divided into several core functional areas, designed for security, engagement, and ease of use:
+
+* **🔐 Enterprise-Grade Security (Biometric Lock)**
+    * Users can lock their financial data behind device-native biometric authentication (Fingerprint/Face Unlock).
+    * The lock state is preserved securely via `SharedPreferences` and survives configuration changes (like screen rotations) to prevent frustrating re-authentication loops.
+* **🤖 Intelligent Background Engine (`WorkManager`)**
+    * **Context-Aware Reminders:** Background workers query the local database *before* alerting the user. For example, if a user has already logged an expense today, the daily reminder is silently canceled to prevent notification spam.
+    * **In-App Notification Inbox:** A dedicated, persistent UI for users to review past alerts, featuring smooth swipe-to-delete animations and active read/unread state tracking.
+* **🏆 Gamified Financial Challenges**
+    * Users can opt into specific financial challenges (e.g., "No Spend Weekend"). The app tracks consecutive successful days and triggers milestone alerts upon completion.
+* **🎯 Visual Savings Goals**
+    * Allows users to set custom financial targets (e.g., "Emergency Fund"). Progress is dynamically calculated and visually represented via custom Compose UI components.
+* **📊 Smart Expense & Income Tracking**
+    * Fast, intuitive logging of daily transactions categorized by type (Income/Expense) with a highly responsive, modern UI.
+
+---
+
+## 🤔 Assumptions & Trade-offs
+
+During development, the following architectural and product assumptions were made to scope the project effectively:
+
+1.  **Privacy First (Offline-Only):** * *Assumption:* Users prefer sensitive financial data to remain strictly on their personal device. 
+    * *Trade-off:* Cloud synchronization (Firebase/AWS) was intentionally omitted to prioritize zero-latency offline performance and absolute data privacy. The local Room Database acts as the single source of truth.
+2.  **Biometric Hardware Availability:** * *Assumption:* The target user's device supports strong biometric authentication or a secure device PIN. The app uses the `androidx.biometric` library to securely fall back to the device PIN if biometric hardware is unavailable.
+3.  **Periodic Work Constraints:** * *Assumption:* Background notifications (like Daily Summaries) do not require exact, down-to-the-millisecond timing. 
+    * *Trade-off:* `WorkManager` is used with flexible execution windows to respect Android's battery optimization (Doze mode) policies, rather than using exact `AlarmManager` triggers which drain the user's battery.
+
+---
+
+## 🏗️ Technical Architecture & Stack
+
+This application strictly adheres to **Clean Architecture** principles and the **MVVM (Model-View-ViewModel)** design pattern.
+
+* **UI Toolkit:** Jetpack Compose (Material Design 3, dynamic theming, custom micro-interactions).
+* **Dependency Injection:** Koin (Chosen for its lightweight footprint and Kotlin-native DSL, injecting ViewModels, Repositories, and Preference Managers).
+* **Asynchronous Data:** Kotlin Coroutines & `StateFlow` (Ensuring the UI layer reacts instantly to database mutations without blocking the main thread).
+* **Local Persistence:** Room Database (Utilizing one-shot `suspend` queries for background workers and continuous `Flow` emissions for active UI observation).
+* **Background Processing:** `WorkManager` (Handles periodic summaries and one-time triggers).
+
+### 📂 Package Structure
 ```text
 com.yourname.financecompanion
 ├── data/               # The Data Layer
 │   ├── database/       # Room Database configuration & migrations
 │   ├── dao/            # Data Access Objects (Transaction, Goal, Challenge, Notification)
 │   ├── model/          # Room Entities
-│   └── repositories/   # Repository pattern implementation (Data fetching & bridging logic)
+│   └── repositories/   # Repository pattern implementation (Data fetching & bridging)
 ├── di/                 # Koin Modules (AppModule for ViewModels, Repositories, Prefs)
 ├── ui/                 # The UI Layer (Jetpack Compose)
 │   ├── features/       # Screen-level composables (Home, Settings, Insights, Notifications)
