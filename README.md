@@ -9,7 +9,7 @@
 
 ## 📖 Project Overview
 
-**Personal Finance Companion** is a modern, privacy-first Android application designed to help users take absolute control of their financial habits. Moving beyond traditional, static expense trackers, this application introduces **gamified financial challenges**, visual **savings goals**, and an **intelligent notification engine** that actively encourages better financial decisions.
+**Personal Finance Companion** is a modern, privacy-first Android application designed to help users take absolute control of their financial habits. Moving beyond traditional, static expense trackers, this application introduces **gamified financial challenges**, visual **savings goals**, and an **notification** that actively encourages better financial decisions.
 
 Developed as a showcase of modern Android engineering standards, it utilizes a 100% Kotlin, single-activity architecture. It prioritizes a buttery-smooth user experience with a declarative UI built with Jetpack Compose, asynchronous data streams via Coroutines/Flow, and a robust offline-first SQLite database using Room.
 
