@@ -31,7 +31,7 @@ Developed as a showcase of modern Android engineering standards, it utilizes a 1
 The application is divided into several core functional areas, designed for security, engagement, and ease of use:
 
 * **🔐 Enterprise-Grade Security (Biometric Lock)**
-    * Users can lock their financial data behind device-native biometric authentication (Fingerprint/Face Unlock).
+    * Users can lock their financial data behind device-native biometric authentication (Fingerprint).
     * The lock state is preserved securely via `SharedPreferences` and survives configuration changes (like screen rotations) to prevent frustrating re-authentication loops.
 * **🤖 Intelligent Background Engine (`WorkManager`)**
     * **Context-Aware Reminders:** Background workers query the local database *before* alerting the user. For example, if a user has already logged an expense today, the daily reminder is silently canceled.
