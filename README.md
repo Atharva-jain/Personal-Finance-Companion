@@ -21,10 +21,9 @@ Developed as a showcase of modern Android engineering standards, it utilizes a 1
 
 | Dashboard Overview | Transaction Management | Insights & Analytics | Smart Inbox |
 | :---: | :---: | :---: | :---: |
-| ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/0.jpg) | <img src="link_to_transaction_add_edit.jpg" width="200"/> | <img src="link_to_insights.jpg" width="200"/> | <img src="link_to_inbox.jpg" width="200"/> |
+| ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/1.jpg) | ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/5.jpg) |  ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/4.jpg)| ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/2.jpg) |
 | **Goals & Challenges** | **Custom Settings** | **Biometric Lock** | **Screen Selection/Navigation** |
-| <img src="link_to_goals.jpg" width="200"/> | <img src="link_to_settings.jpg" width="200"/> | <img src="link_to_lock.jpg" width="200"/> | <img src="link_to_selection.jpg" width="200"/> |
-
+|  ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/3.jpg) |  ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/6.jpg) |  ![image alt](https://github.com/Atharva-jain/Personal-Finance-Companion/blob/e7619508ff37bb0bc3bfba64d1ee8a4b95ca7645/0.jpg) |  
 ---
 
 ## ✨ Explanation of Features
