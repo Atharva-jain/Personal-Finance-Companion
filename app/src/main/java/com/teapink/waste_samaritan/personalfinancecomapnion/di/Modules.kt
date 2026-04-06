@@ -1,4 +1,4 @@
-package com.teapink.waste_samaritan.personalfinancecomapnion.data.di
+package com.teapink.waste_samaritan.personalfinancecomapnion.di
 
 
 import androidx.room.Room

@@ -1,7 +1,7 @@
 package com.teapink.waste_samaritan.personalfinancecomapnion
 
 import android.app.Application
-import com.teapink.waste_samaritan.personalfinancecomapnion.data.di.modules
+import com.teapink.waste_samaritan.personalfinancecomapnion.di.modules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
