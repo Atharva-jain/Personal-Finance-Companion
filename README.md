@@ -54,8 +54,6 @@ During development, the following architectural and product assumptions were mad
 1.  **Privacy First (Offline-Only):** * *Assumption:* Users prefer sensitive financial data to remain strictly on their personal device. 
     * *Trade-off:* Cloud synchronization (Firebase/AWS) was intentionally omitted to prioritize zero-latency offline performance and absolute data privacy. The local Room Database acts as the single source of truth (mitigated by the Data Export feature).
 2.  **Biometric Hardware Availability:** * *Assumption:* The target user's device supports strong biometric authentication or a secure device PIN. The app uses the `androidx.biometric` library to securely fall back to the device PIN if biometric hardware is unavailable.
-3.  **Periodic Work Constraints:** * *Assumption:* Background notifications (like Daily Summaries) do not require exact, down-to-the-millisecond timing. 
-    * *Trade-off:* `WorkManager` is used with flexible execution windows to respect Android's battery optimization (Doze mode) policies, rather than using exact `AlarmManager` triggers which drain the user's battery.
 
 ---
 
