@@ -17,11 +17,13 @@ Developed as a showcase of modern Android engineering standards, it utilizes a 1
 
 ## 📸 App Gallery
 
-*(App screenshots demonstrating core user flows and UI design)*
+*(Visual walkthrough of core user flows and UI design)*
 
-| Dashboard Overview | Smart Inbox | Biometric Lock | Custom Settings |
+| Dashboard Overview | Transaction Management | Insights & Analytics | Smart Inbox |
 | :---: | :---: | :---: | :---: |
-| <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> | <img src="insert_image_link_here.jpg" width="220"/> |
+| <img src="link_to_dashboard.jpg" width="200"/> | <img src="link_to_transaction_add_edit.jpg" width="200"/> | <img src="link_to_insights.jpg" width="200"/> | <img src="link_to_inbox.jpg" width="200"/> |
+| **Goals & Challenges** | **Custom Settings** | **Biometric Lock** | **Screen Selection/Navigation** |
+| <img src="link_to_goals.jpg" width="200"/> | <img src="link_to_settings.jpg" width="200"/> | <img src="link_to_lock.jpg" width="200"/> | <img src="link_to_selection.jpg" width="200"/> |
 
 ---
 
@@ -33,14 +35,16 @@ The application is divided into several core functional areas, designed for secu
     * Users can lock their financial data behind device-native biometric authentication (Fingerprint/Face Unlock).
     * The lock state is preserved securely via `SharedPreferences` and survives configuration changes (like screen rotations) to prevent frustrating re-authentication loops.
 * **🤖 Intelligent Background Engine (`WorkManager`)**
-    * **Context-Aware Reminders:** Background workers query the local database *before* alerting the user. For example, if a user has already logged an expense today, the daily reminder is silently canceled to prevent notification spam.
+    * **Context-Aware Reminders:** Background workers query the local database *before* alerting the user. For example, if a user has already logged an expense today, the daily reminder is silently canceled.
     * **In-App Notification Inbox:** A dedicated, persistent UI for users to review past alerts, featuring smooth swipe-to-delete animations and active read/unread state tracking.
+* **📊 Comprehensive Transaction & Data Management**
+    * **Full CRUD Operations:** Fast, intuitive logging, editing, and deleting of daily transactions categorized by Income/Expense.
+    * **Data Export:** Users can easily export their financial history for external analysis, personal backup, or tax purposes, ensuring they always own their data.
+    * **Demo/Developer Mode (6-Month Data Generation):** Includes a one-click testing utility to instantly generate 6 months of realistic dummy data, allowing users and reviewers to immediately experience the app's powerful Insights and Analytics charts without manual data entry.
 * **🏆 Gamified Financial Challenges**
     * Users can opt into specific financial challenges (e.g., "No Spend Weekend"). The app tracks consecutive successful days and triggers milestone alerts upon completion.
 * **🎯 Visual Savings Goals**
     * Allows users to set custom financial targets (e.g., "Emergency Fund"). Progress is dynamically calculated and visually represented via custom Compose UI components.
-* **📊 Smart Expense & Income Tracking**
-    * Fast, intuitive logging of daily transactions categorized by type (Income/Expense) with a highly responsive, modern UI.
 
 ---
 
@@ -49,7 +53,7 @@ The application is divided into several core functional areas, designed for secu
 During development, the following architectural and product assumptions were made to scope the project effectively:
 
 1.  **Privacy First (Offline-Only):** * *Assumption:* Users prefer sensitive financial data to remain strictly on their personal device. 
-    * *Trade-off:* Cloud synchronization (Firebase/AWS) was intentionally omitted to prioritize zero-latency offline performance and absolute data privacy. The local Room Database acts as the single source of truth.
+    * *Trade-off:* Cloud synchronization (Firebase/AWS) was intentionally omitted to prioritize zero-latency offline performance and absolute data privacy. The local Room Database acts as the single source of truth (mitigated by the Data Export feature).
 2.  **Biometric Hardware Availability:** * *Assumption:* The target user's device supports strong biometric authentication or a secure device PIN. The app uses the `androidx.biometric` library to securely fall back to the device PIN if biometric hardware is unavailable.
 3.  **Periodic Work Constraints:** * *Assumption:* Background notifications (like Daily Summaries) do not require exact, down-to-the-millisecond timing. 
     * *Trade-off:* `WorkManager` is used with flexible execution windows to respect Android's battery optimization (Doze mode) policies, rather than using exact `AlarmManager` triggers which drain the user's battery.
